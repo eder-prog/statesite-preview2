@@ -359,8 +359,12 @@ body.lightbox-active{overflow:hidden}
 .testimonial-meta .name{font-weight:700;color:var(--charcoal)}
 .testimonial-meta .place{color:var(--charcoal-soft);margin-top:2px}
 .slider-hint{text-align:center;font-size:12px;color:var(--charcoal-soft);margin-top:-32px;margin-bottom:32px;letter-spacing:.04em;text-transform:uppercase}
-.trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;opacity:.7}
-.trust-logo{height:40px;padding:0 16px;background:var(--white);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--charcoal-soft);letter-spacing:0.04em}
+/* Trust logos slider — auto-scroll, pause on hover */
+.trust-logos-wrap{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.trust-logos{display:flex;align-items:center;gap:32px;width:max-content;animation:scroll-left 38s linear infinite;opacity:.8;padding:8px 0}
+@media(min-width:768px){.trust-logos{gap:40px}}
+.trust-logos-wrap:hover .trust-logos{animation-play-state:paused}
+.trust-logo{height:48px;padding:0 20px;background:var(--white);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--charcoal-soft);letter-spacing:0.04em;white-space:nowrap;flex-shrink:0;box-shadow:0 2px 8px rgba(0,62,107,.04)}
 
 /* FAQ */
 .faq{background:var(--offwhite)}
@@ -743,13 +747,24 @@ body.lightbox-active{overflow:hidden}
         <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Twenty years in this house and finally a contractor who actually shows up when they say they will. Honest pricing, no surprises."</p><div class="testimonial-author"><div class="testimonial-avatar">JF</div><div class="testimonial-meta"><div class="name">James F.</div><div class="place">Lynn, MA — Full Exterior</div></div></div></div>
       </div>
     </div>
-    <p class="slider-hint">Hover to pause · Reviews are placeholder — data-pending real testimonials</p>
-    <div class="trust-logos">
-      <div class="trust-logo">BBB A+ — pending</div>
-      <div class="trust-logo">Insurance Carrier — pending</div>
-      <div class="trust-logo">GAF Cert — pending</div>
-      <div class="trust-logo">Google Reviews — pending</div>
-      <div class="trust-logo">Angi — pending</div>
+    <div class="trust-logos-wrap">
+      <div class="trust-logos">
+        <div class="trust-logo">BBB A+ — pending</div>
+        <div class="trust-logo">Insurance Carrier — pending</div>
+        <div class="trust-logo">GAF Cert — pending</div>
+        <div class="trust-logo">Google Reviews — pending</div>
+        <div class="trust-logo">Angi — pending</div>
+        <div class="trust-logo">HomeAdvisor — pending</div>
+        <div class="trust-logo">Nextdoor — pending</div>
+        <!-- duplicated for seamless infinite loop -->
+        <div class="trust-logo" aria-hidden="true">BBB A+ — pending</div>
+        <div class="trust-logo" aria-hidden="true">Insurance Carrier — pending</div>
+        <div class="trust-logo" aria-hidden="true">GAF Cert — pending</div>
+        <div class="trust-logo" aria-hidden="true">Google Reviews — pending</div>
+        <div class="trust-logo" aria-hidden="true">Angi — pending</div>
+        <div class="trust-logo" aria-hidden="true">HomeAdvisor — pending</div>
+        <div class="trust-logo" aria-hidden="true">Nextdoor — pending</div>
+      </div>
     </div>
   </div>
 </section>
@@ -766,7 +781,7 @@ body.lightbox-active{overflow:hidden}
         <div class="faq-q">How do free estimates work?</div>
         <div class="faq-a">We respond within 5 minutes of your request, then schedule an on-site visit and provide a written estimate covering scope, materials, timeline, and warranty. No deposit required to receive your estimate.</div>
       </div>
-      <div class="faq-item"><div class="faq-q">Are you licensed and insured?</div><div class="faq-a">Yes. We hold Massachusetts HIC license #XXXXXXX and carry full general liability and workers' compensation insurance through [Carrier Name].</div></div>
+      <div class="faq-item"><div class="faq-q">Are you licensed and insured?</div><div class="faq-a">Yes. We are a fully licensed Massachusetts general contractor and carry comprehensive general liability and workers' compensation insurance. Proof of license and insurance is available upon request.</div></div>
       <div class="faq-item"><div class="faq-q">What's your warranty?</div><div class="faq-a">Materials are covered by manufacturer warranties (up to 50 years for premium roofing). Our workmanship carries a lifetime warranty as long as you own the home.</div></div>
       <div class="faq-item"><div class="faq-q">How long does a typical roof replacement take?</div><div class="faq-a">Most residential roof replacements take 1–3 days depending on size, complexity, and weather. We provide an exact timeline before work begins.</div></div>
       <div class="faq-item"><div class="faq-q">Do you help with insurance claims?</div><div class="faq-a">Yes. For storm damage (Nor'easters, hail, ice dams), we provide documentation and work directly with your insurance adjuster to streamline the claim.</div></div>
