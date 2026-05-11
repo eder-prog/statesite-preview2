@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>State Roofing & Carpentry — Structure Preview (wireframe)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003E6B;
+  --navy-deep:#002a4a;
+  --orange:#F08C2B;
+  --orange-hover:#D6731A;
+  --orange-soft:rgba(240,140,43,.14);
+  --charcoal:#1F2937;
+  --charcoal-soft:#4B5563;
+  --offwhite:#F7F8FA;
+  --white:#fff;
+  --border:#E5E7EB;
+  --trust-bg:#003E6B;
+  --trust-text:#fff;
+  --radius:8px;
+  --radius-lg:12px;
+  --container:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--charcoal);background:var(--white);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+section[id]{scroll-margin-top:96px}
+@media(min-width:768px){section[id]{scroll-margin-top:88px}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-0.01em}
+h1{font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-0.02em}
+h2{font-size:26px;font-weight:700}
+h3{font-size:19px;font-weight:600;line-height:1.3}
+@media(min-width:480px){h1{font-size:34px}h2{font-size:28px}}
+@media(min-width:768px){
+  h1{font-size:56px}
+  h2{font-size:40px}
+  h3{font-size:22px}
+  body{font-size:17px}
+}
+
+/* Containers */
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+@media(min-width:480px){.container{padding:0 24px}}
+@media(min-width:768px){.container{padding:0 56px}}
+@media(min-width:1024px){.container{padding:0 72px}}
+section{padding:48px 0}
+@media(min-width:480px){section{padding:64px 0}}
+@media(min-width:768px){section{padding:96px 0}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:17px;padding:14px 26px;border-radius:var(--radius);text-decoration:none;cursor:pointer;border:0;transition:all .2s ease}
+@media(min-width:768px){.btn{padding:16px 32px}}
+.btn-primary{background:var(--orange);color:var(--white);box-shadow:0 4px 14px rgba(240,140,43,.32);animation:ctaBounce 1.5s ease-in-out infinite}
+.btn-primary:hover{background:var(--orange-hover);animation-play-state:paused;transform:translateY(-2px) scale(1.02)}
+@keyframes ctaBounce{
+  0%,100%{transform:translateY(0) scale(1);box-shadow:0 4px 14px rgba(240,140,43,.32)}
+  50%{transform:translateY(-7px) scale(1.04);box-shadow:0 16px 32px rgba(240,140,43,.55)}
+}
+@media (prefers-reduced-motion: reduce){.btn-primary,.header-estimate,.estimate-submit{animation:none}}
+.btn-outline{background:rgba(255,255,255,.1);color:var(--white);border:1.5px solid rgba(255,255,255,.32);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.btn-outline:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.55);box-shadow:0 6px 22px rgba(0,0,0,.18)}
+.btn-ghost{background:transparent;color:var(--navy);font-weight:600}
+
+/* Emergency banner — navy with orange accent */
+.emergency{background:var(--navy-deep);color:var(--white);text-align:center;padding:12px 16px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:12px;border-bottom:1px solid rgba(232,118,44,.25)}
+.emergency .em-label{display:inline-flex;align-items:center;gap:6px;color:var(--orange);font-weight:700;letter-spacing:0.04em}
+.emergency .em-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(232,118,44,.25);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(232,118,44,.25)}50%{box-shadow:0 0 0 8px rgba(232,118,44,.1)}}
+.emergency a{color:var(--white);text-decoration:underline;font-weight:700}
+.emergency a:hover{color:var(--orange)}
+
+/* Header — ALWAYS fixed at top viewport. Glass-blur on hero (subtle, lets hero show through) → white opaque after scroll. */
+.header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease,-webkit-backdrop-filter .35s ease,box-shadow .35s ease}
+/* Header container — full-width with tight padding so logo sits far-left and right cluster has room for all buttons */
+.header > .container{max-width:none;padding:0 10px}
+@media(min-width:480px){.header > .container{padding:0 16px}}
+@media(min-width:768px){.header > .container{padding:0 28px}}
+@media(min-width:1280px){.header > .container{padding:0 40px}}
+.header.on-dark{background:rgba(2,21,40,.28);backdrop-filter:blur(10px) saturate(140%);-webkit-backdrop-filter:blur(10px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.06)}
+.header.on-light{background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(0,62,107,.08);box-shadow:0 2px 16px rgba(0,62,107,.06)}
+.header-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;height:64px;gap:16px}
+@media(min-width:768px){.header-inner{height:72px;gap:24px}}
+.header-inner > .logo{justify-self:start}
+.header-inner > .nav{justify-self:center}
+.header-inner > .header-right,.header-inner > .header-cta{justify-self:end}
+/* Logo — morphs from full wordmark to icon on scroll. Scroll-based trigger (more reliable than IntersectionObserver). */
+.logo{position:relative;display:block;height:38px;width:160px;transition:width .5s cubic-bezier(.4,0,.2,1);overflow:hidden;flex-shrink:0;margin-left:4px}
+@media(min-width:480px){.logo{height:42px;width:200px;margin-left:8px}}
+@media(min-width:768px){.logo{height:48px;width:230px;margin-left:44px}}
+/* On wide viewports, logo aligns with hero text — but clamped so it doesn't push so far right that the right cluster overflows. */
+@media(min-width:1200px){.logo{margin-left:clamp(44px, calc(50vw - 556px), 120px)}}
+@media(min-width:1280px){.logo{margin-left:clamp(32px, calc(50vw - 568px), 120px)}}
+.header.is-scrolled .logo{width:46px}
+@media(min-width:768px){.header.is-scrolled .logo{width:54px}}
+.logo-img{position:absolute;top:50%;left:0;transform:translateY(-50%);height:100%;width:auto;transition:opacity .4s ease,transform .5s cubic-bezier(.4,0,.2,1),filter .35s ease;pointer-events:none}
+.logo-img.is-full{opacity:1;transform:translateY(-50%) translateX(0)}
+.logo-img.is-icon{opacity:0;transform:translateY(-50%) translateX(-8px) scale(.85)}
+.header.is-scrolled .logo-img.is-full{opacity:0;transform:translateY(-50%) translateX(40px) scale(.95)}
+.header.is-scrolled .logo-img.is-icon{opacity:1;transform:translateY(-50%) translateX(0) scale(1)}
+/* Logo color inversion based on bg: white on dark bg, original on light bg */
+.header.on-dark .logo-img{filter:brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,.45))}
+.header.on-light .logo-img{filter:none}
+.nav{display:none;gap:4px;font-size:14px;font-weight:600;color:rgba(255,255,255,.95);transition:color .3s ease;padding:6px;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:background .35s ease,border-color .35s ease,color .35s ease}
+@media(min-width:1024px){.nav{display:flex}}
+.nav a{padding:6px 14px;border-radius:999px;transition:background .25s ease,color .25s ease}
+.nav a:hover{background:rgba(255,255,255,.12);color:var(--orange)}
+.header.on-light .nav{background:rgba(255,255,255,.35);border-color:rgba(0,62,107,.12);color:var(--charcoal);backdrop-filter:blur(8px) saturate(160%);-webkit-backdrop-filter:blur(8px) saturate(160%)}
+.header.on-light .nav a:hover{background:rgba(0,62,107,.08);color:var(--orange)}
+.header-right{display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
+.header-right > *{flex-shrink:0}
+/* Hide the 24/7 pill below 1200px — keeps header from overflowing while still leaving room for logo+nav+button. */
+.header-cta{display:none}
+@media(min-width:1200px){.header-cta{display:flex}}
+.header-cta{align-items:center;gap:8px;padding:6px 16px 6px 14px;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.12);border-radius:999px;transition:background .35s ease,border-color .35s ease;white-space:nowrap}
+.header.on-light .header-cta{background:rgba(255,255,255,.35);border-color:rgba(0,62,107,.12);backdrop-filter:blur(8px) saturate(160%);-webkit-backdrop-filter:blur(8px) saturate(160%)}
+/* Header estimate CTA — compact primary button with bounce */
+.header-estimate{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;font-size:14px;font-weight:700;background:var(--orange);color:var(--white);border-radius:999px;text-decoration:none;letter-spacing:.01em;box-shadow:0 4px 14px rgba(240,140,43,.32);animation:ctaBounce 1.5s ease-in-out infinite;transition:background .25s ease;white-space:nowrap}
+.header-estimate:hover{background:var(--orange-hover);animation-play-state:paused}
+@media(min-width:768px){.header-estimate{padding:11px 22px;font-size:15px}}
+@media(max-width:767px){.header-estimate{padding:8px 12px;font-size:12px;letter-spacing:0}}
+.header-estimate .arrow{transition:transform .25s ease}
+.header-estimate:hover .arrow{transform:translateX(3px)}
+.header-emerg{display:none;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--orange);text-transform:uppercase;align-items:center;gap:6px;line-height:1;padding-right:12px;border-right:1px solid rgba(255,255,255,.18);transition:border-color .3s ease;white-space:nowrap}
+.header.on-light .header-emerg{border-right-color:rgba(0,62,107,.15)}
+@media(min-width:768px){.header-emerg{display:inline-flex}}
+.header-emerg::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(240,140,43,.28);animation:pulse 2s infinite}
+.header-phone{color:var(--orange);font-weight:700;font-size:15px;display:flex;align-items:center;gap:6px;transition:color .3s ease;letter-spacing:.01em;white-space:nowrap}
+@media(min-width:768px){.header-phone{font-size:16px}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(240,140,43,.28)}50%{box-shadow:0 0 0 8px rgba(240,140,43,.1)}}
+
+/* Hero — left-aligned text + service photo bg + rich depth (distinct from rest of site) */
+.hero{position:relative;color:var(--white);padding:108px 0 80px;overflow:hidden;background:#08243D;min-height:520px}
+@media(min-width:768px){.hero{padding:180px 0 160px;min-height:680px}}
+/* Layer 1: real hero photo (vivid: higher saturation + brightness + contrast for punch) */
+.hero::before{content:"";position:absolute;inset:0;background-image:url("assets/hero.png");background-size:cover;background-position:center;filter:saturate(1.45) contrast(1.12) brightness(1.06);z-index:0}
+/* Layer 2: gradient overlay — lighter than before so colors of photo shine through */
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(2,21,40,.84) 0%,rgba(4,32,60,.62) 38%,rgba(8,46,82,.32) 70%,rgba(15,56,98,.18) 100%),linear-gradient(180deg,transparent 0%,transparent 65%,rgba(2,15,30,.55) 100%);z-index:1}
+.hero-photo-pending{position:absolute;bottom:16px;right:20px;background:rgba(0,0,0,.55);color:rgba(255,255,255,.85);font-size:11px;padding:4px 10px;border-radius:4px;letter-spacing:.04em;z-index:3}
+.hero .container{position:relative;z-index:3}
+.hero-inner{position:relative;max-width:680px;text-align:left;margin:0}
+.hero h1{margin-bottom:20px}
+.hero-sub{font-size:15px;font-weight:400;opacity:.92;margin-bottom:24px;line-height:1.5}
+@media(min-width:480px){.hero-sub{font-size:16px;margin-bottom:28px}}
+@media(min-width:768px){.hero-sub{font-size:20px;margin-bottom:32px}}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;max-width:100%}
+.hero-ctas .btn{flex:0 1 auto;white-space:nowrap}
+@media(max-width:520px){
+  .hero-ctas{flex-direction:column;align-items:stretch;gap:12px}
+  .hero-ctas .btn{width:100%;justify-content:center;white-space:normal}
+}
+.hero-trust{margin-top:28px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;opacity:.85}
+.hero-trust span{margin:0 8px;opacity:.5}
+
+/* Estimate Form (A2P compliant) */
+.estimate{background:var(--offwhite);padding:56px 0}
+@media(min-width:480px){.estimate{padding:72px 0}}
+@media(min-width:768px){.estimate{padding:96px 0}}
+.estimate-wrap{max-width:760px;margin:0 auto}
+.estimate-head{text-align:center;margin-bottom:32px}
+.estimate-head h2{margin-bottom:8px;font-size:28px}
+@media(min-width:768px){.estimate-head h2{font-size:36px}}
+.estimate-head p{color:var(--charcoal-soft);margin:0;font-size:16px}
+.estimate-head .response{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:var(--orange-soft);color:var(--orange);font-size:13px;font-weight:600;padding:6px 14px;border-radius:20px;letter-spacing:0.04em}
+.estimate-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;box-shadow:0 8px 24px rgba(15,46,76,.06)}
+@media(min-width:768px){.estimate-card{padding:40px}}
+.form-row{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:16px}
+@media(min-width:768px){.form-row.two{grid-template-columns:1fr 1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:13px;font-weight:600;color:var(--charcoal);letter-spacing:0.02em}
+.form-group label .req{color:var(--orange);margin-left:2px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;color:var(--charcoal);background:var(--white);transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-soft)}
+.form-group textarea{resize:vertical;min-height:88px;font-family:inherit}
+.form-group .helper{font-size:12px;color:var(--charcoal-soft)}
+.consents{display:flex;flex-direction:column;gap:14px;padding:20px;background:var(--offwhite);border-radius:var(--radius);border:1px solid var(--border);margin:8px 0 20px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:var(--charcoal-soft);line-height:1.5}
+.consent input[type=checkbox]{flex-shrink:0;width:18px;height:18px;margin-top:2px;accent-color:var(--orange);cursor:pointer}
+.consent label{cursor:pointer}
+.consent a{color:var(--orange);text-decoration:underline;font-weight:600}
+.estimate-submit{width:100%;padding:18px;font-size:17px;font-weight:700;background:var(--orange);color:var(--white);border:0;border-radius:var(--radius);cursor:pointer;letter-spacing:0.02em;transition:background .2s;box-shadow:0 4px 14px rgba(240,140,43,.32);animation:ctaBounce 1.5s ease-in-out infinite}
+.estimate-submit:hover{background:var(--orange-hover);animation-play-state:paused;transform:translateY(-2px) scale(1.01)}
+.estimate-privacy{text-align:center;font-size:12px;color:var(--charcoal-soft);margin-top:16px}
+.estimate-privacy a{color:var(--charcoal-soft);text-decoration:underline}
+.estimate-emergency-note{margin-top:24px;text-align:center;font-size:14px;color:var(--charcoal-soft);padding:14px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius)}
+.estimate-emergency-note strong{color:var(--navy)}
+.estimate-emergency-note a{color:var(--orange);text-decoration:none;font-weight:700}
+
+/* Trust band — icon circles + big numbers + angular orange accents */
+.trust{background:var(--trust-bg);color:var(--trust-text);padding:88px 0 96px;position:relative;overflow:hidden}
+@media(min-width:768px){.trust{padding:104px 0 112px}}
+.trust::before{content:"";position:absolute;top:0;left:0;width:58%;height:26px;background:var(--orange);clip-path:polygon(0 0,100% 0,calc(100% - 40px) 100%,0 100%)}
+.trust::after{content:"";position:absolute;bottom:0;right:0;width:58%;height:26px;background:var(--orange);clip-path:polygon(40px 0,100% 0,100% 100%,0 100%)}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 24px;align-items:center;position:relative;z-index:1}
+@media(min-width:1024px){.trust-grid{grid-template-columns:repeat(4,1fr);gap:24px}}
+.trust-item{display:flex;align-items:center;gap:12px;text-align:left}
+@media(min-width:768px){.trust-item{gap:18px}}
+.trust-icon{flex-shrink:0;width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.06);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;color:var(--white);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+@media(min-width:768px){.trust-icon{width:80px;height:80px}}
+.trust-icon svg{width:28px;height:28px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:768px){.trust-icon svg{width:36px;height:36px}}
+.trust-icon svg.fill{fill:currentColor;stroke:none}
+.trust-text{display:flex;flex-direction:column;gap:3px;min-width:0}
+.trust-item .num{font-size:22px;font-weight:800;color:var(--white);line-height:1;letter-spacing:-.02em;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+@media(min-width:768px){.trust-item .num{font-size:36px}}
+.trust-item .num .unit{font-size:18px;font-weight:700;opacity:.9}
+.trust-item .label{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--white);opacity:.92;line-height:1.3}
+@media(min-width:768px){.trust-item .label{font-size:13px;letter-spacing:0.08em}}
+.trust-item.compact .num{font-size:22px}
+@media(min-width:768px){.trust-item.compact .num{font-size:24px}}
+.trust-item .sub{display:none}
+
+/* Services */
+.section-head{text-align:center;margin-bottom:48px}
+.section-head h2{margin-bottom:12px}
+.section-head p{color:var(--charcoal-soft);font-size:17px;margin:0}
+.services-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:768px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;display:flex;flex-direction:column;position:relative}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,62,107,.18)}
+.service-img{aspect-ratio:16/10;position:relative;overflow:hidden;background:linear-gradient(135deg,#003e6b,#002a4a)}
+.service-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.4,0,.2,1),filter .35s ease}
+.service-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,62,107,.15) 0%,rgba(0,62,107,.55) 100%);transition:background .35s ease;pointer-events:none}
+.service-card:hover .service-img img{transform:scale(1.06)}
+.service-card:hover .service-img::after{background:linear-gradient(180deg,rgba(245,179,57,.0) 0%,rgba(245,179,57,.55) 100%)}
+.service-body{padding:24px;display:flex;flex-direction:column;flex:1;transition:background .35s ease}
+.service-body h3{margin-bottom:8px;transition:color .35s ease}
+.service-body p{color:var(--charcoal-soft);font-size:15px;margin:0;flex:1;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .35s ease,color .35s ease}
+.service-card:hover .service-body p{max-height:200px;opacity:1;margin:0 0 16px;color:var(--navy)}
+/* Touch devices (no hover): show description by default + skip image hover color swap */
+@media (hover: none){
+  .service-body p{max-height:200px;opacity:1;margin:0 0 16px}
+  .service-card:hover{transform:none;box-shadow:0 4px 14px rgba(0,62,107,.08)}
+  .service-card:hover .service-img{background:linear-gradient(135deg,#003e6b,#002a4a)}
+  .service-card:hover .service-img img{transform:none}
+  .service-card:hover .service-img::after{background:linear-gradient(180deg,rgba(0,62,107,.15) 0%,rgba(0,62,107,.55) 100%)}
+  .service-card:hover .service-link{color:var(--orange)}
+}
+.service-link{color:var(--orange);font-weight:700;font-size:15px;margin-top:auto;display:inline-block;transition:color .35s ease}
+.service-card:hover .service-link{color:var(--navy)}
+.service-card.emergency-card{border:1px solid var(--border)}
+.service-card.emergency-card .service-img{background:linear-gradient(135deg,#003e6b,#002a4a)}
+.service-card.emergency-card:hover .service-img{background:linear-gradient(135deg,#F5B339,#E0A024);color:var(--navy)}
+.service-badge{position:absolute;top:12px;right:12px;background:var(--orange);color:var(--navy);font-size:11px;font-weight:800;padding:4px 10px;border-radius:20px;letter-spacing:0.06em;z-index:2;box-shadow:0 2px 8px rgba(240,140,43,.45)}
+
+/* Gallery */
+.gallery{background:var(--offwhite)}
+.gallery-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
+.gallery-filter{padding:8px 18px;border-radius:24px;border:1px solid var(--border);background:var(--white);color:var(--charcoal);font-size:14px;font-weight:500;cursor:pointer}
+.gallery-filter.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:768px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
+.gallery-item{position:relative;aspect-ratio:4/3;background:#cfd8e3;border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 4px 14px rgba(0,62,107,.08)}
+.gallery-item:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 28px rgba(0,62,107,.18)}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .55s cubic-bezier(.4,0,.2,1)}
+.gallery-item img.after{opacity:0}
+.gallery-item:hover img.before{opacity:0}
+.gallery-item:hover img.after{opacity:1}
+/* Touch devices: show AFTER (finished result) by default, label says "RESULT" and "Tap" hint */
+@media (hover: none){
+  .gallery-item img.before{opacity:0}
+  .gallery-item img.after{opacity:1}
+  .gallery-item .ba::before{content:"AFTER"}
+  .gallery-item .ba{background:var(--orange);color:var(--white)}
+  .gallery-item .hover-hint{content:"Tap to compare"}
+}
+.gallery-item .label{position:absolute;bottom:0;left:0;right:0;padding:14px 12px 12px;background:linear-gradient(transparent,rgba(0,42,74,.92));color:var(--white);font-size:13px;font-weight:600;line-height:1.35;z-index:2}
+.gallery-item .label strong{display:block;font-weight:700;font-size:14px;margin-bottom:2px}
+.gallery-item .ba{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.95);color:var(--navy);font-size:10px;font-weight:800;padding:5px 9px;border-radius:4px;letter-spacing:0.08em;z-index:3;display:flex;align-items:center;gap:6px;transition:background .35s ease,color .35s ease}
+.gallery-item .ba::before{content:"BEFORE";display:inline-block}
+.gallery-item .ba::after{content:"";width:14px;height:1px;background:var(--charcoal-soft);display:inline-block}
+.gallery-item:hover .ba{background:var(--orange);color:var(--white)}
+.gallery-item:hover .ba::before{content:"AFTER"}
+.gallery-item:hover .ba::after{background:var(--white)}
+.gallery-item .hover-hint{position:absolute;top:10px;right:10px;background:rgba(0,42,74,.7);color:var(--white);font-size:10px;font-weight:600;padding:5px 8px;border-radius:4px;letter-spacing:0.04em;z-index:3;opacity:1;transition:opacity .3s ease;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.gallery-item:hover .hover-hint{opacity:0}
+.gallery-grid.is-filtered .gallery-item.is-hidden{display:none}
+
+/* Lightbox — popup for before/after comparison */
+.lightbox{position:fixed;inset:0;background:rgba(2,15,30,.78);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+.lightbox.is-open{opacity:1;visibility:visible}
+.lightbox-close{position:fixed;top:24px;right:24px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);color:var(--white);font-size:24px;font-weight:300;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s ease,transform .25s ease;z-index:102}
+.lightbox-close:hover{background:rgba(255,255,255,.22);transform:scale(1.08)}
+.lightbox-nav{position:fixed;top:50%;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);color:var(--white);font-size:22px;font-weight:300;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s ease,transform .25s ease;z-index:102;transform:translateY(-50%)}
+.lightbox-nav:hover{background:rgba(255,255,255,.22)}
+.lightbox-prev{left:24px}
+.lightbox-next{right:24px}
+.lightbox-content{position:relative;max-width:1280px;width:100%;max-height:calc(100vh - 100px);display:flex;flex-direction:column;gap:14px;align-items:center;z-index:101}
+.lightbox-images{display:grid;grid-template-columns:1fr;gap:12px;width:100%;max-height:calc(100vh - 200px)}
+@media(min-width:768px){.lightbox-images{grid-template-columns:1fr 1fr;gap:18px}}
+.lightbox-img-wrap{position:relative;background:rgba(0,0,0,.4);border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.lightbox-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.lightbox-img-label{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.95);color:var(--navy);font-size:11px;font-weight:800;padding:6px 12px;border-radius:4px;letter-spacing:.08em}
+.lightbox-img-label.after{background:var(--orange);color:var(--white)}
+.lightbox-caption{color:var(--white);text-align:center;font-size:15px;font-weight:500;display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap}
+.lightbox-caption strong{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:12px;color:var(--orange);padding:4px 10px;background:rgba(240,140,43,.15);border-radius:4px;border:1px solid rgba(240,140,43,.3)}
+.lightbox-counter{color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.04em}
+body.lightbox-active{overflow:hidden}
+
+/* Scroll-reveal animations */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+.reveal-stagger > *{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal-stagger.is-visible > *{opacity:1;transform:translateY(0)}
+.reveal-stagger.is-visible > *:nth-child(1){transition-delay:0s}
+.reveal-stagger.is-visible > *:nth-child(2){transition-delay:.08s}
+.reveal-stagger.is-visible > *:nth-child(3){transition-delay:.16s}
+.reveal-stagger.is-visible > *:nth-child(4){transition-delay:.24s}
+.reveal-stagger.is-visible > *:nth-child(5){transition-delay:.32s}
+.reveal-stagger.is-visible > *:nth-child(6){transition-delay:.4s}
+.reveal-stagger.is-visible > *:nth-child(7){transition-delay:.48s}
+.reveal-stagger.is-visible > *:nth-child(8){transition-delay:.56s}
+@media (prefers-reduced-motion: reduce){
+  .reveal,.reveal-stagger > *{opacity:1;transform:none;transition:none}
+}
+
+/* About + Process — stacked vertically: about top (text+image split), process below (3-col) */
+.about-section{display:flex;flex-direction:column;gap:40px}
+@media(min-width:768px){.about-section{gap:64px}}
+.about-top{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+@media(min-width:768px){.about-top{grid-template-columns:1.1fr 1fr;gap:56px}}
+.about-text h2{margin-bottom:20px}
+.about-text p{color:var(--charcoal-soft);margin:0 0 16px;font-size:16px}
+.about-photo{aspect-ratio:4/3;background:url("assets/about-us.jpg") center/cover no-repeat,linear-gradient(135deg,#cfd8e3,#aab8c6);border-radius:var(--radius-lg);min-height:220px;position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(0,62,107,.15)}
+@media(min-width:768px){.about-photo{min-height:280px}}
+.about-bullets{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--charcoal)}
+.about-bullets li::before{content:"✓ ";color:var(--orange);font-weight:800}
+.process-block{padding-top:32px;border-top:1px solid var(--border)}
+.process-block h2{margin-bottom:36px;text-align:center}
+.process-steps{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:768px){.process-steps{grid-template-columns:repeat(3,1fr);gap:40px}}
+.process-step{display:flex;flex-direction:column;gap:14px;align-items:flex-start;text-align:left}
+.process-num{flex-shrink:0;width:52px;height:52px;background:var(--orange);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;box-shadow:0 4px 12px rgba(240,140,43,.35)}
+.process-step h3{margin-bottom:0}
+.process-step p{color:var(--charcoal-soft);margin:0;font-size:15px}
+
+/* Social Proof — auto-scroll slider right→left, pause on hover */
+.social{background:var(--offwhite);overflow:hidden}
+.testimonials-wrap{overflow:hidden;position:relative;margin-bottom:48px;mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.testimonials-track{display:flex;gap:24px;width:max-content;animation:scroll-left 48s linear infinite}
+.testimonials-wrap:hover .testimonials-track{animation-play-state:paused}
+@keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.testimonial{background:var(--white);padding:22px 20px;border-radius:var(--radius-lg);border:1px solid var(--border);min-width:280px;max-width:280px;flex-shrink:0;box-shadow:0 4px 16px rgba(0,62,107,.06)}
+@media(min-width:480px){.testimonial{min-width:320px;max-width:320px;padding:24px 22px}}
+@media(min-width:768px){.testimonial{min-width:380px;max-width:380px;padding:28px}}
+.stars{color:var(--orange);font-size:18px;letter-spacing:2px;margin-bottom:12px}
+.testimonial-quote{font-size:15px;color:var(--charcoal);margin:0 0 20px;line-height:1.55;font-style:italic;min-height:90px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#003e6b,#002a4a);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0}
+.testimonial-meta{font-size:13px}
+.testimonial-meta .name{font-weight:700;color:var(--charcoal)}
+.testimonial-meta .place{color:var(--charcoal-soft);margin-top:2px}
+.slider-hint{text-align:center;font-size:12px;color:var(--charcoal-soft);margin-top:-32px;margin-bottom:32px;letter-spacing:.04em;text-transform:uppercase}
+.trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;opacity:.7}
+.trust-logo{height:40px;padding:0 16px;background:var(--white);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--charcoal-soft);letter-spacing:0.04em}
+
+/* FAQ */
+.faq{background:var(--offwhite)}
+.faq-container{max-width:1200px;margin:0 auto}
+.faq-list{display:grid;grid-template-columns:1fr;gap:12px;align-content:start}
+@media(min-width:768px){.faq-list{grid-template-columns:1fr 1fr;gap:16px 24px}}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;font-weight:600;font-size:17px;color:var(--navy)}
+.faq-q::after{content:"+";font-size:22px;font-weight:400;color:var(--orange);flex-shrink:0}
+.faq-item.open .faq-q::after{content:"−"}
+.faq-a{margin-top:12px;color:var(--charcoal-soft);font-size:15px;line-height:1.6;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* Final CTA — bg image + 2-col layout (text left, form right) */
+.final-cta{position:relative;color:var(--white);padding:64px 16px;overflow:hidden;background:var(--navy)}
+@media(min-width:480px){.final-cta{padding:80px 20px}}
+@media(min-width:768px){.final-cta{padding:120px 24px}}
+.final-cta-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;text-align:left;max-width:1200px;margin:0 auto}
+@media(min-width:960px){.final-cta-grid{grid-template-columns:1fr 1fr;gap:56px}}
+@media(min-width:1200px){.final-cta-grid{grid-template-columns:1.05fr 1fr;gap:64px}}
+.final-cta-text{display:flex;flex-direction:column;gap:18px}
+.final-cta-text h2{color:var(--white);margin:0;text-align:left;font-size:32px}
+@media(min-width:768px){.final-cta-text h2{font-size:42px}}
+.final-cta-text > p{font-size:17px;opacity:.88;margin:0;line-height:1.55}
+.final-cta-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px}
+.final-cta-emergency{margin-top:8px;font-size:14px;color:var(--orange)}
+.final-cta-emergency a{color:var(--orange);text-decoration:underline;font-weight:600}
+.final-cta-emergency a:hover{color:var(--white)}
+.final-cta-trust{margin-top:8px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;opacity:.65;font-weight:600}
+/* CTA form card — same A2P-compliant form, white on dark bg */
+.final-cta-form{background:var(--white);color:var(--charcoal);border-radius:var(--radius-lg);padding:22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.1)}
+@media(min-width:480px){.final-cta-form{padding:26px 22px}}
+@media(min-width:768px){.final-cta-form{padding:36px 32px}}
+.final-cta-text h2{font-size:26px}
+@media(min-width:480px){.final-cta-text h2{font-size:30px}}
+@media(min-width:768px){.final-cta-text h2{font-size:42px}}
+.final-cta-form h3{margin:0 0 4px;font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.final-cta-form .form-sub{margin:0 0 20px;font-size:14px;color:var(--charcoal-soft)}
+.final-cta-form .form-row{margin-bottom:14px}
+.final-cta-form .form-group label{font-size:12px}
+.final-cta-form .form-group input,.final-cta-form .form-group select,.final-cta-form .form-group textarea{padding:11px 13px;font-size:14px}
+.final-cta-form .consents{padding:14px;margin:6px 0 16px;gap:10px}
+.final-cta-form .consent{font-size:12px;gap:10px}
+.final-cta-form .consent input[type=checkbox]{width:16px;height:16px}
+.final-cta-form .estimate-submit{padding:14px;font-size:15px}
+.final-cta-form .estimate-privacy{font-size:11px;margin-top:12px}
+.final-cta .final-cta-bg-pending{display:none}
+.final-cta::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,42,74,.88),rgba(0,42,74,.94)),url("assets/hero.png");background-size:cover;background-position:center;filter:saturate(.9);z-index:0}
+.final-cta .container{position:relative;z-index:1}
+.final-cta-bg-pending{position:absolute;bottom:12px;right:16px;background:rgba(0,0,0,.45);color:rgba(255,255,255,.7);font-size:11px;padding:4px 10px;border-radius:4px;letter-spacing:.04em;z-index:2}
+
+/* Footer */
+.footer{background:#091d31;color:rgba(255,255,255,.8);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:36px}
+@media(min-width:768px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:48px}}
+.footer h4{color:var(--white);font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 16px}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.footer a:hover{color:var(--orange)}
+.footer-logo{display:inline-block;height:44px;margin-bottom:14px}
+.footer-logo img{height:100%;width:auto;filter:brightness(0) invert(1) opacity(.95)}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,.7);margin:0 0 12px;line-height:1.55}
+.footer-brand .license{font-size:12px;color:rgba(255,255,255,.5);letter-spacing:0.04em}
+.cities{font-size:13px;line-height:1.7;color:rgba(255,255,255,.65)}
+.sub-footer{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:12px;color:rgba(255,255,255,.5)}
+.sub-footer-links{display:flex;gap:16px;flex-wrap:wrap}
+
+/* Pending markers */
+.pending{outline:2px dashed rgba(232,118,44,.4);outline-offset:2px}
+.pending-note{display:inline-block;background:rgba(232,118,44,.12);color:var(--orange);font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;letter-spacing:0.04em;margin-left:8px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- Header (S1) — overlays the hero, no preceding strip -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo" aria-label="State General Contractors Inc — Home">
+      <img src="assets/logo-full.png" alt="State General Contractors Inc" class="logo-img is-full" />
+      <img src="assets/logo-icon.png" alt="" aria-hidden="true" class="logo-img is-icon" />
+    </a>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="header-cta">
+        <span class="header-emerg" aria-label="24/7 Emergency Available" title="24/7 Emergency Available">24/7</span>
+        <a href="tel:+16177022062" class="header-phone">(617) 702-2062</a>
+      </div>
+      <a href="#estimate-form" class="header-estimate">Request Free Estimate <span class="arrow">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero (S2) -->
+<section class="hero" data-bg="dark">
+  <div class="container">
+    <div class="hero-inner">
+      <h1>Trusted Massachusetts Roofing &amp; General Contracting. Built local, since 2006.</h1>
+      <p class="hero-sub">Family-operated. Fully licensed and insured. Serving every city across Massachusetts — from roofing and siding to remodeling, framing, and 24/7 emergency repairs. Response within 5 minutes.</p>
+      <div class="hero-ctas">
+        <a href="#estimate-form" class="btn btn-primary">Request a Free Estimate →</a>
+        <a href="tel:+16177022062" class="btn btn-outline">Or Call (617) 702-2062</a>
+      </div>
+      <div class="hero-trust">Licensed <span>·</span> Insured <span>·</span> 20+ Years <span>·</span> Free Estimates</div>
+    </div>
+  </div>
+</section>
+
+<!-- Estimate Form (S2.5 — A2P 10DLC compliant) -->
+<section class="estimate" id="estimate-form">
+  <div class="container estimate-wrap">
+    <div class="estimate-head reveal">
+      <h2>Request Your Free Estimate</h2>
+      <p>Tell us about your project. We'll respond with a written estimate.</p>
+      <div class="response">⚡ Response within 5 minutes</div>
+    </div>
+    <form class="estimate-card reveal" onsubmit="event.preventDefault();alert('Form submission demo — backend integration is data-pending.')">
+      <div class="form-row two">
+        <div class="form-group"><label for="f-name">Full Name<span class="req">*</span></label><input id="f-name" type="text" name="name" required autocomplete="name" placeholder="Your name" /></div>
+        <div class="form-group"><label for="f-email">Email<span class="req">*</span></label><input id="f-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="f-phone">Phone <span class="helper" style="font-weight:400">(optional)</span></label><input id="f-phone" type="tel" name="phone" autocomplete="tel" placeholder="(617) 555-0100" /><span class="helper">Provide a phone number if you'd prefer a call back or SMS updates.</span></div>
+      </div>
+
+      <!-- A2P 10DLC / TCPA consents -->
+      <div class="consents">
+        <div class="consent">
+          <input type="checkbox" id="c-sms" name="sms_consent" />
+          <label for="c-sms"><strong>SMS Consent (optional — only if you provided a phone number):</strong> By checking this box, I expressly consent to receive SMS messages from <strong>State Roofing &amp; Carpentry</strong> at the phone number provided, including estimate updates, scheduling, and project communication. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe at any time. Reply <strong>HELP</strong> for help. Consent is not a condition of purchase. See our <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>.</label>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="c-contact" name="contact_consent" required />
+          <label for="c-contact"><strong>Contact Consent (required):</strong> I agree that State Roofing &amp; Carpentry may contact me by phone or email regarding my estimate request. I understand my information will not be sold or shared with third parties.</label>
+        </div>
+      </div>
+
+      <button type="submit" class="estimate-submit">Send My Free Estimate Request →</button>
+      <div class="estimate-privacy">Your information is private. We don't sell or share it. <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> · <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>.</div>
+    </form>
+
+    <div class="estimate-emergency-note">
+      <strong>24/7 Emergency?</strong> Skip the form — <a href="tel:+16177022062">call (617) 702-2062</a> anytime.
+    </div>
+  </div>
+</section>
+
+<!-- Trust Band (S3) -->
+<section class="trust" data-bg="dark">
+  <div class="container">
+    <div class="trust-grid reveal-stagger">
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 34h32M11 34c0-7.18 5.82-13 13-13s13 5.82 13 13M19 21V11h10v10M14 30h20"/></svg>
+        </div>
+        <div class="trust-text">
+          <div class="num"><span data-count="20" data-suffix="+">0+</span></div>
+          <div class="label">Years Of Experience</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 4l-14 5v12c0 9 6 16.6 14 18 8-1.4 14-9 14-18V9L24 4z"/><path d="M17 23l5 5 9-9"/></svg>
+        </div>
+        <div class="trust-text">
+          <div class="num"><span data-count="100" data-suffix="%">0%</span></div>
+          <div class="label">Fully Insured &amp; Licensed</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M44 33.84v6a4 4 0 01-4.36 4 39.58 39.58 0 01-17.26-6.14 39 39 0 01-12-12A39.58 39.58 0 014.18 8.36 4 4 0 018.16 4h6a4 4 0 014 3.44c.26 1.92.74 3.8 1.44 5.62a4 4 0 01-.9 4.22l-2.54 2.54a32 32 0 0012 12l2.54-2.54a4 4 0 014.22-.9c1.82.7 3.7 1.18 5.62 1.44A4 4 0 0144 33.84z"/></svg>
+        </div>
+        <div class="trust-text">
+          <div class="num">24/7</div>
+          <div class="label">Emergency Response</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" class="fill"><polygon points="24,4 30.18,16.52 44,18.54 34,28.28 36.36,42.04 24,35.54 11.64,42.04 14,28.28 4,18.54 17.82,16.52"/></svg>
+        </div>
+        <div class="trust-text">
+          <div class="num">5.0 ★</div>
+          <div class="label">5 Stars Rated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services (S4) -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Complete Home Exterior &amp; General Contracting</h2>
+      <p>One contractor for your entire home — roofing, siding, decking, remodeling, framing, and emergency repairs.</p>
+    </div>
+    <div class="services-grid reveal-stagger">
+      <div class="service-card"><div class="service-img"><img src="assets/gallery/roofing/after-1.jpg" alt="Roofing service" loading="lazy"></div><div class="service-body"><h3>Roofing</h3><p>Repairs, full installations, inspections, and replacements. Lifetime workmanship warranty.</p><a href="#estimate-form" class="service-link">Get an Estimate →</a></div></div>
+      <div class="service-card"><div class="service-img"><img src="assets/gallery/siding/after-1.jpg" alt="Siding service" loading="lazy"></div><div class="service-body"><h3>Siding</h3><p>Residential siding installation, soffit and fascia repair, and full exterior refresh.</p><a href="#estimate-form" class="service-link">Get an Estimate →</a></div></div>
+      <div class="service-card"><div class="service-img"><img src="assets/gallery/decking/after-1.jpg" alt="Decking service" loading="lazy"></div><div class="service-body"><h3>Decking</h3><p>Custom deck design and construction. Pressure-treated, composite, and natural wood.</p><a href="#estimate-form" class="service-link">Get an Estimate →</a></div></div>
+      <div class="service-card"><div class="service-img"><img src="assets/services/remodeling.jpg" alt="Remodeling service" loading="lazy"></div><div class="service-body"><h3>Remodeling</h3><p>Room additions, kitchens, bathrooms, and whole-home renovations.</p><a href="#estimate-form" class="service-link">Get an Estimate →</a></div></div>
+      <div class="service-card"><div class="service-img"><img src="assets/services/framing.jpg" alt="Framing service" loading="lazy"></div><div class="service-body"><h3>Framing</h3><p>New construction and remodel framing by our in-house crew. No subcontracting.</p><a href="#estimate-form" class="service-link">Get an Estimate →</a></div></div>
+      <div class="service-card emergency-card"><span class="service-badge">24/7 AVAILABLE</span><div class="service-img"><img src="assets/gallery/roofing/after-2.jpg" alt="Emergency roofing service" loading="lazy"></div><div class="service-body"><h3>Emergency Roofing</h3><p>Storm damage, leaks, fallen branches. Available any hour, any day across MA.</p><a href="tel:+16177022062" class="service-link">Call Now (617) 702-2062 →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery (S5) -->
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Our Recent Work Across Massachusetts</h2>
+      <p>Before/after photos from real projects. Filter by service.</p>
+    </div>
+    <div class="gallery-filters">
+      <button class="gallery-filter active" data-filter="all">All (11)</button>
+      <button class="gallery-filter" data-filter="roofing">Roofing (2)</button>
+      <button class="gallery-filter" data-filter="siding">Siding (5)</button>
+      <button class="gallery-filter" data-filter="decking">Decking (3)</button>
+      <button class="gallery-filter" data-filter="stairs">Stairs (1)</button>
+    </div>
+    <div class="gallery-grid reveal-stagger">
+      <!-- ROOFING (2) -->
+      <div class="gallery-item" data-category="roofing">
+        <img src="assets/gallery/roofing/before-1.jpg" alt="Roof replacement — before" class="before" loading="lazy">
+        <img src="assets/gallery/roofing/after-1.jpg" alt="Roof replacement — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Roofing</strong>Roof replacement, MA</div>
+      </div>
+      <div class="gallery-item" data-category="roofing">
+        <img src="assets/gallery/roofing/before-2.jpg" alt="Roofing project — before" class="before" loading="lazy">
+        <img src="assets/gallery/roofing/after-2.jpg" alt="Roofing project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Roofing</strong>Full roof installation, MA</div>
+      </div>
+      <!-- SIDING (5) -->
+      <div class="gallery-item" data-category="siding">
+        <img src="assets/gallery/siding/before-1.jpg" alt="Siding project — before" class="before" loading="lazy">
+        <img src="assets/gallery/siding/after-1.jpg" alt="Siding project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Siding</strong>Exterior siding refresh, MA</div>
+      </div>
+      <div class="gallery-item" data-category="siding">
+        <img src="assets/gallery/siding/before-2.jpg" alt="Siding project — before" class="before" loading="lazy">
+        <img src="assets/gallery/siding/after-2.jpg" alt="Siding project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Siding</strong>Full siding replacement, MA</div>
+      </div>
+      <div class="gallery-item" data-category="siding">
+        <img src="assets/gallery/siding/before-3.jpg" alt="Siding project — before" class="before" loading="lazy">
+        <img src="assets/gallery/siding/after-3.jpg" alt="Siding project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Siding</strong>Residential siding, MA</div>
+      </div>
+      <div class="gallery-item" data-category="siding">
+        <img src="assets/gallery/siding/before-4.jpeg" alt="Siding project — before" class="before" loading="lazy">
+        <img src="assets/gallery/siding/after-4.jpeg" alt="Siding project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Siding</strong>Exterior renovation, MA</div>
+      </div>
+      <div class="gallery-item" data-category="siding">
+        <img src="assets/gallery/siding/before-5.jpg" alt="Siding project — before" class="before" loading="lazy">
+        <img src="assets/gallery/siding/after-5.jpg" alt="Siding project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Siding</strong>Soffit + fascia refresh, MA</div>
+      </div>
+      <!-- DECKING (3) -->
+      <div class="gallery-item" data-category="decking">
+        <img src="assets/gallery/decking/before-1.jpg" alt="Deck project — before" class="before" loading="lazy">
+        <img src="assets/gallery/decking/after-1.jpg" alt="Deck project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Decking</strong>Custom deck build, MA</div>
+      </div>
+      <div class="gallery-item" data-category="decking">
+        <img src="assets/gallery/decking/before-2.jpg" alt="Deck project — before" class="before" loading="lazy">
+        <img src="assets/gallery/decking/after-2.jpg" alt="Deck project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Decking</strong>Deck rebuild, MA</div>
+      </div>
+      <div class="gallery-item" data-category="decking">
+        <img src="assets/gallery/decking/before-3.jpg" alt="Deck project — before" class="before" loading="lazy">
+        <img src="assets/gallery/decking/after-3.jpg" alt="Deck project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Decking</strong>Composite decking, MA</div>
+      </div>
+      <!-- STAIRS (1) -->
+      <div class="gallery-item" data-category="stairs">
+        <img src="assets/gallery/stairs/before-1.jpg" alt="Stairs project — before" class="before" loading="lazy">
+        <img src="assets/gallery/stairs/after-1.jpg" alt="Stairs project — after" class="after" loading="lazy">
+        <span class="ba"></span>
+        <span class="hover-hint">Tap to compare</span>
+        <div class="label"><strong>Stairs</strong>Custom stair installation, MA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About + Process (S6) -->
+<section id="about">
+  <div class="container about-section">
+    <div class="about-top reveal-stagger">
+      <div class="about-text">
+        <h2>Local Massachusetts Contractor Since 2006</h2>
+        <p>State Roofing &amp; Carpentry is a family-operated general contractor based in Massachusetts. For over two decades we've helped MA homeowners protect, repair, and improve their homes — from emergency storm damage to full kitchen remodels.</p>
+        <p>We don't subcontract. Our in-house crew handles every project, fully insured and fully accountable from estimate to final walkthrough.</p>
+        <ul class="about-bullets">
+          <li>Family-operated since 2006</li>
+          <li>Massachusetts-only focus — we know local codes</li>
+          <li>In-house crew, no subcontracting</li>
+        </ul>
+      </div>
+      <div class="about-photo"></div>
+    </div>
+    <div class="process-block">
+      <h2>How We Work — 3 Simple Steps</h2>
+      <div class="process-steps reveal-stagger">
+        <div class="process-step">
+          <div class="process-num">1</div>
+          <h3>Free Estimate</h3>
+          <p>We respond in 5 minutes, then come on-site to inspect and provide a transparent written estimate. No pressure, no surprises.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h3>Project Plan</h3>
+          <p>We walk you through scope, materials, timeline, and warranty. You approve before any work starts.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h3>Quality Execution</h3>
+          <p>Our crew completes the work on schedule, fully insured, with a 100% satisfaction guarantee on every project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Proof (S7) -->
+<section class="social">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>What Massachusetts Homeowners Say</h2>
+      <p>Real reviews from real projects. <span class="pending-note">data-pending: real testimonials</span></p>
+    </div>
+    <div class="testimonials-wrap">
+      <div class="testimonials-track">
+        <!-- Set 1 -->
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"State did our roof replacement in November. Crew was professional, finished on schedule, cleaned up perfectly. Best contractor experience we've had."</p><div class="testimonial-author"><div class="testimonial-avatar">SK</div><div class="testimonial-meta"><div class="name">Sarah K.</div><div class="place">Quincy, MA — Roof Replacement</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Called them at 11pm during a Nor'easter with a leak. Crew was on the roof by 7am. Saved our ceiling."</p><div class="testimonial-author"><div class="testimonial-avatar">MR</div><div class="testimonial-meta"><div class="name">Mike R.</div><div class="place">Worcester, MA — Emergency Repair</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Hired State for siding plus a deck. Quote was the most transparent we got. Work was excellent. Already recommended to two neighbors."</p><div class="testimonial-author"><div class="testimonial-avatar">JL</div><div class="testimonial-meta"><div class="name">Jennifer L.</div><div class="place">Newton, MA — Siding + Deck</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Kitchen remodel came in on budget and on schedule. Communication was excellent — daily updates from the project manager."</p><div class="testimonial-author"><div class="testimonial-avatar">DT</div><div class="testimonial-meta"><div class="name">David T.</div><div class="place">Cambridge, MA — Kitchen Remodel</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Got quotes from three contractors. State explained everything clearly and didn't oversell. Quality of work matched what they promised."</p><div class="testimonial-author"><div class="testimonial-avatar">PM</div><div class="testimonial-meta"><div class="name">Patricia M.</div><div class="place">Brockton, MA — New Siding</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Ice dam damage caused a leak last winter. State handled the insurance claim documentation and replaced the roof. Smooth from start to finish."</p><div class="testimonial-author"><div class="testimonial-avatar">RC</div><div class="testimonial-meta"><div class="name">Robert C.</div><div class="place">Lowell, MA — Roof + Claim</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Built our composite deck in two weeks. Crew was respectful of our yard and pets. Already booked them for next year's bathroom remodel."</p><div class="testimonial-author"><div class="testimonial-avatar">AN</div><div class="testimonial-meta"><div class="name">Amanda N.</div><div class="place">Framingham, MA — Composite Deck</div></div></div></div>
+        <div class="testimonial"><div class="stars">★★★★★</div><p class="testimonial-quote">"Twenty years in this house and finally a contractor who actually shows up when they say they will. Honest pricing, no surprises."</p><div class="testimonial-author"><div class="testimonial-avatar">JF</div><div class="testimonial-meta"><div class="name">James F.</div><div class="place">Lynn, MA — Full Exterior</div></div></div></div>
+
+        <!-- Set 2 (duplicated for seamless infinite scroll) -->
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"State did our roof replacement in November. Crew was professional, finished on schedule, cleaned up perfectly. Best contractor experience we've had."</p><div class="testimonial-author"><div class="testimonial-avatar">SK</div><div class="testimonial-meta"><div class="name">Sarah K.</div><div class="place">Quincy, MA — Roof Replacement</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Called them at 11pm during a Nor'easter with a leak. Crew was on the roof by 7am. Saved our ceiling."</p><div class="testimonial-author"><div class="testimonial-avatar">MR</div><div class="testimonial-meta"><div class="name">Mike R.</div><div class="place">Worcester, MA — Emergency Repair</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Hired State for siding plus a deck. Quote was the most transparent we got. Work was excellent. Already recommended to two neighbors."</p><div class="testimonial-author"><div class="testimonial-avatar">JL</div><div class="testimonial-meta"><div class="name">Jennifer L.</div><div class="place">Newton, MA — Siding + Deck</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Kitchen remodel came in on budget and on schedule. Communication was excellent — daily updates from the project manager."</p><div class="testimonial-author"><div class="testimonial-avatar">DT</div><div class="testimonial-meta"><div class="name">David T.</div><div class="place">Cambridge, MA — Kitchen Remodel</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Got quotes from three contractors. State explained everything clearly and didn't oversell. Quality of work matched what they promised."</p><div class="testimonial-author"><div class="testimonial-avatar">PM</div><div class="testimonial-meta"><div class="name">Patricia M.</div><div class="place">Brockton, MA — New Siding</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Ice dam damage caused a leak last winter. State handled the insurance claim documentation and replaced the roof. Smooth from start to finish."</p><div class="testimonial-author"><div class="testimonial-avatar">RC</div><div class="testimonial-meta"><div class="name">Robert C.</div><div class="place">Lowell, MA — Roof + Claim</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Built our composite deck in two weeks. Crew was respectful of our yard and pets. Already booked them for next year's bathroom remodel."</p><div class="testimonial-author"><div class="testimonial-avatar">AN</div><div class="testimonial-meta"><div class="name">Amanda N.</div><div class="place">Framingham, MA — Composite Deck</div></div></div></div>
+        <div class="testimonial" aria-hidden="true"><div class="stars">★★★★★</div><p class="testimonial-quote">"Twenty years in this house and finally a contractor who actually shows up when they say they will. Honest pricing, no surprises."</p><div class="testimonial-author"><div class="testimonial-avatar">JF</div><div class="testimonial-meta"><div class="name">James F.</div><div class="place">Lynn, MA — Full Exterior</div></div></div></div>
+      </div>
+    </div>
+    <p class="slider-hint">Hover to pause · Reviews are placeholder — data-pending real testimonials</p>
+    <div class="trust-logos">
+      <div class="trust-logo">BBB A+ — pending</div>
+      <div class="trust-logo">Insurance Carrier — pending</div>
+      <div class="trust-logo">GAF Cert — pending</div>
+      <div class="trust-logo">Google Reviews — pending</div>
+      <div class="trust-logo">Angi — pending</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (S8) -->
+<section id="faq" class="faq">
+  <div class="container faq-container">
+    <div class="section-head reveal">
+      <h2>Frequently Asked Questions</h2>
+      <p>Not finding the answer? Call us anytime at <a href="tel:+16177022062" style="color:var(--orange);font-weight:600">(617) 702-2062</a>.</p>
+    </div>
+    <div class="faq-list reveal-stagger">
+      <div class="faq-item open">
+        <div class="faq-q">How do free estimates work?</div>
+        <div class="faq-a">We respond within 5 minutes of your request, then schedule an on-site visit and provide a written estimate covering scope, materials, timeline, and warranty. No deposit required to receive your estimate.</div>
+      </div>
+      <div class="faq-item"><div class="faq-q">Are you licensed and insured?</div><div class="faq-a">Yes. We hold Massachusetts HIC license #XXXXXXX and carry full general liability and workers' compensation insurance through [Carrier Name].</div></div>
+      <div class="faq-item"><div class="faq-q">What's your warranty?</div><div class="faq-a">Materials are covered by manufacturer warranties (up to 50 years for premium roofing). Our workmanship carries a lifetime warranty as long as you own the home.</div></div>
+      <div class="faq-item"><div class="faq-q">How long does a typical roof replacement take?</div><div class="faq-a">Most residential roof replacements take 1–3 days depending on size, complexity, and weather. We provide an exact timeline before work begins.</div></div>
+      <div class="faq-item"><div class="faq-q">Do you help with insurance claims?</div><div class="faq-a">Yes. For storm damage (Nor'easters, hail, ice dams), we provide documentation and work directly with your insurance adjuster to streamline the claim.</div></div>
+      <div class="faq-item"><div class="faq-q">How quickly can you respond to emergencies?</div><div class="faq-a">For 24/7 emergencies (active leaks, storm damage, fallen branches), we aim to be on-site within 4–8 hours, often the same day.</div></div>
+      <div class="faq-item"><div class="faq-q">What areas of Massachusetts do you serve?</div><div class="faq-a">All of Massachusetts — including Boston, Worcester, Springfield, Cambridge, Lowell, Brockton, Quincy, Lynn, New Bedford, Newton, Somerville, Framingham, and every town in between.</div></div>
+      <div class="faq-item"><div class="faq-q">How does pricing work?</div><div class="faq-a">Free estimates are written and binding. We don't charge hidden fees, and we don't ask for full payment upfront. Most projects use a milestone payment structure.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA (S9) — 2-col: text + form -->
+<section class="final-cta" id="contact" data-bg="dark">
+  <div class="final-cta-grid reveal">
+    <div class="final-cta-text">
+      <h2>Ready to Start Your Project?</h2>
+      <p>Response within 5 minutes. Licensed, insured, 20+ years serving Massachusetts.</p>
+      <div class="final-cta-ctas">
+        <a href="tel:+16177022062" class="btn btn-outline">Or Call (617) 702-2062</a>
+      </div>
+      <div class="final-cta-emergency"><strong>24/7 Emergency?</strong> <a href="tel:+16177022062">Same number, anytime.</a></div>
+      <div class="final-cta-trust">Licensed · Insured · 20+ Years Serving MA</div>
+    </div>
+    <form class="final-cta-form" id="cta-estimate-form" onsubmit="event.preventDefault();alert('Form submission demo — backend integration is data-pending.')">
+      <h3>Request a Free Estimate</h3>
+      <p class="form-sub">Response within 5 minutes.</p>
+      <div class="form-row">
+        <div class="form-group"><label for="fc-name">Full Name<span class="req">*</span></label><input id="fc-name" type="text" name="name" required autocomplete="name" placeholder="Your name" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="fc-email">Email<span class="req">*</span></label><input id="fc-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="fc-phone">Phone <span class="helper" style="font-weight:400">(optional)</span></label><input id="fc-phone" type="tel" name="phone" autocomplete="tel" placeholder="(617) 555-0100" /></div>
+      </div>
+      <div class="consents">
+        <div class="consent">
+          <input type="checkbox" id="fc-sms" name="sms_consent" />
+          <label for="fc-sms"><strong>SMS Consent (optional):</strong> By checking this box, I consent to receive SMS messages from <strong>State Roofing &amp; Carpentry</strong> at the phone number provided. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe. See <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> &amp; <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a>.</label>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="fc-contact" name="contact_consent" required />
+          <label for="fc-contact"><strong>Contact Consent (required):</strong> State Roofing &amp; Carpentry may contact me about my estimate request. Info not sold or shared.</label>
+        </div>
+      </div>
+      <button type="submit" class="estimate-submit">Send My Free Estimate Request →</button>
+      <div class="estimate-privacy">Your information is private. <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> · <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a>.</div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer (S10) -->
+<footer class="footer" data-bg="dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo" aria-label="State General Contractors Inc">
+          <img src="assets/logo-full.png" alt="State General Contractors Inc" />
+        </a>
+        <p>Trusted Massachusetts roofing &amp; general contracting since 2006. Family-operated. Licensed and fully insured.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Roofing</a></li>
+          <li><a href="#services">Siding</a></li>
+          <li><a href="#services">Decking</a></li>
+          <li><a href="#services">Remodeling</a></li>
+          <li><a href="#services">Framing</a></li>
+          <li><a href="#services">24/7 Emergency Roofing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+16177022062">(617) 702-2062</a></li>
+          <li><a href="mailto:info@stategc.net">info@stategc.net</a></li>
+          <li>24/7 Emergency Available</li>
+          <li>Serving All of Massachusetts</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Areas Served</h4>
+        <div class="cities">Boston · Worcester · Springfield · Cambridge · Lowell · Brockton · New Bedford · Quincy · Lynn · Fall River · Newton · Somerville · Framingham · Haverhill · Brookline · Plymouth · Medford · Taunton · Chicopee · Weymouth · and every town across MA</div>
+      </div>
+    </div>
+    <div class="sub-footer">
+      <div>© 2026 State Roofing &amp; Carpentry. All rights reserved.</div>
+      <div class="sub-footer-links">
+        <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox structure (hidden by default) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightbox-caption">
+  <button class="lightbox-close" aria-label="Close lightbox" type="button">&times;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous project" type="button">&larr;</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next project" type="button">&rarr;</button>
+  <div class="lightbox-content">
+    <div class="lightbox-images">
+      <div class="lightbox-img-wrap"><span class="lightbox-img-label">BEFORE</span><img id="lb-before" src="" alt="Before"></div>
+      <div class="lightbox-img-wrap"><span class="lightbox-img-label after">AFTER</span><img id="lb-after" src="" alt="After"></div>
+    </div>
+    <div class="lightbox-caption" id="lightbox-caption"><strong id="lb-cat"></strong><span id="lb-desc"></span><span class="lightbox-counter" id="lb-counter"></span></div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
+});
+// Gallery filter — toggles visibility based on data-category
+(function(){
+  const filters=document.querySelectorAll('.gallery-filter');
+  const grid=document.querySelector('.gallery-grid');
+  if(!grid)return;
+  const items=grid.querySelectorAll('.gallery-item');
+  filters.forEach(b=>{
+    b.addEventListener('click',()=>{
+      filters.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const filter=b.dataset.filter||'all';
+      if(filter==='all'){
+        grid.classList.remove('is-filtered');
+        items.forEach(it=>it.classList.remove('is-hidden'));
+      } else {
+        grid.classList.add('is-filtered');
+        items.forEach(it=>{
+          if(it.dataset.category===filter)it.classList.remove('is-hidden');
+          else it.classList.add('is-hidden');
+        });
+      }
+    });
+  });
+})();
+
+// Lightbox — click gallery item to open before/after popup
+(function(){
+  const lb=document.getElementById('lightbox');
+  if(!lb)return;
+  const lbBefore=document.getElementById('lb-before');
+  const lbAfter=document.getElementById('lb-after');
+  const lbCat=document.getElementById('lb-cat');
+  const lbDesc=document.getElementById('lb-desc');
+  const lbCounter=document.getElementById('lb-counter');
+  const btnClose=lb.querySelector('.lightbox-close');
+  const btnPrev=lb.querySelector('.lightbox-prev');
+  const btnNext=lb.querySelector('.lightbox-next');
+  const items=Array.from(document.querySelectorAll('.gallery-item'));
+  let current=-1;
+  function visibleItems(){return items.filter(it=>!it.classList.contains('is-hidden'))}
+  function show(idxInVisible){
+    const list=visibleItems();
+    if(!list.length)return;
+    current=((idxInVisible%list.length)+list.length)%list.length;
+    const item=list[current];
+    const before=item.querySelector('img.before');
+    const after=item.querySelector('img.after');
+    const label=item.querySelector('.label');
+    lbBefore.src=before?before.src:'';
+    lbAfter.src=after?after.src:'';
+    lbBefore.alt=before?before.alt:'Before';
+    lbAfter.alt=after?after.alt:'After';
+    const strong=label?label.querySelector('strong'):null;
+    lbCat.textContent=strong?strong.textContent:'';
+    lbDesc.textContent=label?(label.textContent.replace(strong?strong.textContent:'','').trim()):'';
+    lbCounter.textContent=`${current+1} / ${list.length}`;
+  }
+  function open(item){
+    const list=visibleItems();
+    const idx=list.indexOf(item);
+    if(idx<0)return;
+    show(idx);
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden','false');
+    document.body.classList.add('lightbox-active');
+  }
+  function close(){
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lightbox-active');
+  }
+  // Gallery item click
+  items.forEach(it=>{
+    it.addEventListener('click',(e)=>{
+      if(it.classList.contains('is-hidden'))return;
+      open(it);
+    });
+    // Keyboard accessibility
+    it.setAttribute('role','button');
+    it.setAttribute('tabindex','0');
+    it.addEventListener('keydown',(e)=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();open(it)}
+    });
+  });
+  btnClose.addEventListener('click',close);
+  btnPrev.addEventListener('click',()=>show(current-1));
+  btnNext.addEventListener('click',()=>show(current+1));
+  lb.addEventListener('click',(e)=>{if(e.target===lb)close()});
+  document.addEventListener('keydown',(e)=>{
+    if(!lb.classList.contains('is-open'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft')show(current-1);
+    else if(e.key==='ArrowRight')show(current+1);
+  });
+})();
+
+// Scroll-reveal animations + number count-up
+(function(){
+  const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion){
+    // Skip animations: just make everything visible immediately
+    document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>el.classList.add('is-visible'));
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const target=parseInt(el.dataset.count,10);
+      const suffix=el.dataset.suffix||'';
+      el.textContent=target+suffix;
+    });
+    return;
+  }
+  function countUp(el){
+    if(el.dataset.counted)return;
+    el.dataset.counted='1';
+    const target=parseInt(el.dataset.count,10);
+    const suffix=el.dataset.suffix||'';
+    const duration=1400;
+    const start=performance.now();
+    const easeOut=t=>1-Math.pow(1-t,3);
+    function step(now){
+      const p=Math.min(1,(now-start)/duration);
+      const eased=easeOut(p);
+      const current=Math.floor(target*eased);
+      el.textContent=current+suffix;
+      if(p<1)requestAnimationFrame(step);
+      else el.textContent=target+suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      entry.target.classList.add('is-visible');
+      // Trigger count-up on any data-count inside this element
+      entry.target.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(entry.target);
+    });
+  },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>io.observe(el));
+})();
+
+// Adaptive header — detects which section is BEHIND the header and adapts color accordingly.
+// Logo collapses to icon when over any non-hero section (i.e., once user has scrolled at all past initial state).
+(function(){
+  const header=document.querySelector('.header');
+  if(!header)return;
+  let raf=null,headerHeight=72;
+  function getProbeY(){return headerHeight+8}
+  function update(){
+    const y=window.scrollY||window.pageYOffset||0;
+    const probeY=getProbeY();
+    // Sample 3 horizontal positions so glass elements above don't fool elementFromPoint
+    const samples=[window.innerWidth*.15,window.innerWidth*.5,window.innerWidth*.85];
+    let darkVotes=0,total=0;
+    for(const x of samples){
+      const el=document.elementFromPoint(x,probeY);
+      if(!el)continue;
+      const section=el.closest('[data-bg]');
+      total++;
+      if(section&&section.dataset.bg==='dark')darkVotes++;
+    }
+    const isDark=total===0?(y<80):darkVotes>=Math.ceil(total/2);
+    // Logo collapses based on scroll position (not section color) — once you scroll past 80px, logo collapses regardless
+    const isScrolled=y>80;
+    // Apply state
+    if(isDark){
+      header.classList.add('on-dark');
+      header.classList.remove('on-light');
+    } else {
+      header.classList.remove('on-dark');
+      header.classList.add('on-light');
+    }
+    // Separate class for logo collapse, independent of color
+    if(isScrolled)header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+    raf=null;
+  }
+  // Cache header height
+  function measure(){const r=header.getBoundingClientRect();headerHeight=r.height||72}
+  measure();
+  window.addEventListener('resize',measure,{passive:true});
+  // Initial state
+  header.classList.add('on-dark');
+  // Run once after page paints (sections have layout)
+  requestAnimationFrame(update);
+  window.addEventListener('scroll',()=>{
+    if(raf)return;
+    raf=requestAnimationFrame(update);
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
