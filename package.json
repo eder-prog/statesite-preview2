@@ -1,0 +1,33 @@
+{
+  "name": "statesite-preview",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static landing page for State Roofing & Carpentry — Massachusetts residential general contractor. Vanilla HTML + CSS + JS, no build step.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "start": "npx --yes serve . -l 3000",
+    "build": "echo 'Static HTML site — no build step needed' && exit 0",
+    "preview": "npx --yes serve . -l 8080"
+  },
+  "keywords": [
+    "landing-page",
+    "static-site",
+    "html",
+    "css",
+    "javascript",
+    "vanilla",
+    "contractor",
+    "massachusetts"
+  ],
+  "author": "Growth Solutions US <team@growthsolutionsus.com>",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/eder-prog/statesite-preview",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eder-prog/statesite-preview.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
