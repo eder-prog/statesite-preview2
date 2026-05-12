@@ -155,8 +155,10 @@ section{padding:48px 0}
   .hero-ctas{flex-direction:column;align-items:stretch;gap:12px}
   .hero-ctas .btn{width:100%;justify-content:center;white-space:normal}
 }
-.hero-trust{margin-top:28px;font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;opacity:.85}
-.hero-trust span{margin:0 8px;opacity:.5}
+.hero-trust{margin-top:24px;font-size:10px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;opacity:.85;white-space:nowrap}
+.hero-trust span{margin:0 6px;opacity:.5}
+@media(min-width:480px){.hero-trust{font-size:11px}.hero-trust span{margin:0 7px}}
+@media(min-width:768px){.hero-trust{margin-top:28px;font-size:13px;letter-spacing:0.06em}.hero-trust span{margin:0 8px}}
 
 /* Estimate Form (A2P compliant) */
 .estimate{background:var(--offwhite);padding:56px 0}
