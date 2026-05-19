@@ -1,6 +1,6 @@
 # Deploy via cPanel Git Version Control — State Roofing & Carpentry
 
-**Repo:** `eder-prog/statesite-preview` (vanilla HTML)
+**Repo:** `eder-prog/statesite-preview2` (vanilla HTML)
 **Target:** `https://stategcinc.com` em GoDaddy cPanel
 **Mecanismo:** cPanel clona o repo → `.cpanel.yml` copia arquivos pra `public_html/`
 
@@ -9,7 +9,7 @@
 ## ⚙️ Pré-requisitos
 
 - [ ] cPanel acessível (login GoDaddy → Web Hosting → Manage → cPanel Admin)
-- [ ] Repo `statesite-preview` pushado com último commit (já feito por mim)
+- [ ] Repo `statesite-preview2` pushado com último commit (já feito por mim)
 - [ ] Acesso ao GitHub do `eder-prog` (pra gerar Deploy Key ou Personal Access Token)
 
 ---
@@ -20,7 +20,7 @@
 
 ### Opção A — Personal Access Token (mais simples)
 1. https://github.com/settings/tokens → **Generate new token (classic)**
-2. Note: `cpanel-deploy-statesite-preview`
+2. Note: `cpanel-deploy-statesite-preview2`
 3. Expiration: **No expiration** (ou 1 ano)
 4. Scopes: marca apenas **`repo`** (acesso completo a repos privados)
 5. **Generate token** → copia o token (`ghp_...`)
@@ -28,17 +28,17 @@
 
 ### Opção B — Deploy Key SSH (mais seguro, recomendado pra produção)
 1. cPanel → **SSH Access** → **Manage SSH Keys** → **Generate a New Key**
-   - Key Name: `github-statesite-preview`
+   - Key Name: `github-statesite-preview2`
    - Sem passphrase
    - Generate
-2. Clica em **View/Download** ao lado do `github-statesite-preview.pub` (chave pública)
+2. Clica em **View/Download** ao lado do `github-statesite-preview2.pub` (chave pública)
 3. Copia tudo (começa com `ssh-rsa AAAA...`)
-4. No GitHub: https://github.com/eder-prog/statesite-preview/settings/keys → **Add deploy key**
+4. No GitHub: https://github.com/eder-prog/statesite-preview2/settings/keys → **Add deploy key**
    - Title: `cPanel GoDaddy stategcinc`
    - Key: cola o conteúdo do `.pub`
    - **NÃO** marca "Allow write access" (read-only é o suficiente)
    - **Add key**
-5. Volta no cPanel → **Manage SSH Keys** → ao lado da chave privada `github-statesite-preview` → **Manage** → **Authorize**
+5. Volta no cPanel → **Manage SSH Keys** → ao lado da chave privada `github-statesite-preview2` → **Manage** → **Authorize**
 
 ---
 
@@ -50,10 +50,10 @@
 
    | Campo | Valor |
    |-------|-------|
-   | **Clone URL** | `https://USERNAME:TOKEN@github.com/eder-prog/statesite-preview.git` (Opção A — substitui `USERNAME` pelo seu user GitHub e `TOKEN` pelo PAT que gerou) |
-   | **Clone URL** (alt.) | `git@github.com:eder-prog/statesite-preview.git` (Opção B — SSH com Deploy Key) |
-   | **Repository Path** | `/home/SEU_CPANEL_USER/repositories/statesite-preview` (deixa cPanel preencher) |
-   | **Repository Name** | `statesite-preview` |
+   | **Clone URL** | `https://USERNAME:TOKEN@github.com/eder-prog/statesite-preview2.git` (Opção A — substitui `USERNAME` pelo seu user GitHub e `TOKEN` pelo PAT que gerou) |
+   | **Clone URL** (alt.) | `git@github.com:eder-prog/statesite-preview2.git` (Opção B — SSH com Deploy Key) |
+   | **Repository Path** | `/home/SEU_CPANEL_USER/repositories/statesite-preview2` (deixa cPanel preencher) |
+   | **Repository Name** | `statesite-preview2` |
 
 4. Clica em **Create** → aguarda 10–30s o clone
 
@@ -63,7 +63,7 @@
 
 ## 🚀 Passo 3 — Primeiro deploy
 
-1. Lista de repos → ao lado de `statesite-preview` → **Manage**
+1. Lista de repos → ao lado de `statesite-preview2` → **Manage**
 2. Aba **Pull or Deploy**
 3. Clica **Update from Remote** (garante que está no HEAD mais recente)
 4. Clica **Deploy HEAD Commit** ← isso roda o `.cpanel.yml`
@@ -114,7 +114,7 @@ git push origin main
 ```
 
 No cPanel:
-1. Git Version Control → **Manage** ao lado de `statesite-preview`
+1. Git Version Control → **Manage** ao lado de `statesite-preview2`
 2. **Pull or Deploy** → **Update from Remote** → **Deploy HEAD Commit**
 3. Refresh stategcinc.com (Ctrl+Shift+R pra ignorar cache)
 

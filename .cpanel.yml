@@ -1,7 +1,7 @@
 ---
 # =====================================================================
 # cPanel Git Version Control — Auto-Deploy Manifest
-# Repo:   eder-prog/statesite-preview (vanilla HTML/CSS/JS)
+# Repo:   eder-prog/statesite-preview2 (vanilla HTML/CSS/JS)
 # Target: $HOME/public_html/ (your GoDaddy site root)
 # Trigger: cPanel → Git Version Control → Manage → Pull or Deploy
 #          → "Update from Remote" then "Deploy HEAD Commit"
