@@ -1,0 +1,19 @@
+---
+# =====================================================================
+# cPanel Git Version Control — Auto-Deploy Manifest
+# Repo:   eder-prog/statesite-preview (vanilla HTML/CSS/JS)
+# Target: $HOME/public_html/ (your GoDaddy site root)
+# Trigger: cPanel → Git Version Control → Manage → Pull or Deploy
+#          → "Update from Remote" then "Deploy HEAD Commit"
+# =====================================================================
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -f index.html      $DEPLOYPATH
+    - /bin/cp -f privacy.html    $DEPLOYPATH
+    - /bin/cp -f terms.html      $DEPLOYPATH
+    - /bin/cp -f robots.txt      $DEPLOYPATH
+    - /bin/cp -f sitemap.xml     $DEPLOYPATH
+    - /bin/cp -f .htaccess       $DEPLOYPATH
+    - /bin/cp -Rf assets         $DEPLOYPATH

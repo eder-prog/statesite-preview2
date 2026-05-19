@@ -1,0 +1,180 @@
+# =====================================================================
+# State Roofing & Carpentry — .htaccess (GoDaddy cPanel / Apache)
+# Domain: https://stategcinc.com
+# Last updated: 2026-05-18
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. Default options
+# ---------------------------------------------------------------------
+Options -Indexes +FollowSymLinks
+DirectoryIndex index.html index.htm
+AddDefaultCharset UTF-8
+ServerSignature Off
+
+# ---------------------------------------------------------------------
+# 2. MIME types (modern formats not always registered on GoDaddy)
+# ---------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType image/svg+xml                  .svg .svgz
+  AddType image/webp                     .webp
+  AddType image/avif                     .avif
+  AddType image/x-icon                   .ico
+  AddType application/manifest+json      .webmanifest
+  AddType application/font-woff2         .woff2
+  AddType application/font-woff          .woff
+  AddType font/ttf                       .ttf
+  AddType application/xml                .xml
+  AddType text/plain                     .txt
+  AddType text/cache-manifest            .appcache
+  AddCharset UTF-8 .html .css .js .xml .json .svg .txt
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 3. Rewrite rules — HTTPS, non-www, clean URLs, SPA-style 404
+# ---------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 3.1 Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # 3.2 Force non-www (www.stategcinc.com → stategcinc.com)
+  RewriteCond %{HTTP_HOST} ^www\.stategcinc\.com$ [NC]
+  RewriteRule ^(.*)$ https://stategcinc.com/$1 [R=301,L]
+
+  # 3.3 Remove trailing slashes (except for real directories)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+
+  # 3.4 Clean URLs — serve /privacy when /privacy.html exists
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([^.]+)$ $1.html [L]
+
+  # 3.5 Permanent redirect from .html URL to clean URL
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # 3.6 Redirect /index, /index.html, /home → /
+  RewriteRule ^(index|home)/?$ / [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 4. Security headers (SEO trust + browser hardening)
+# ---------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" env=HTTPS
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Remove server fingerprinting
+  Header unset X-Powered-By
+  Header unset Server
+
+  # Sitemap + robots — short cache so updates propagate fast
+  <FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 5. Cache control — long for assets, short for HTML
+# ---------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                                "access plus 1 month"
+
+  # HTML — short cache, force revalidation
+  ExpiresByType text/html                       "access plus 0 seconds"
+  ExpiresByType application/xhtml+xml           "access plus 0 seconds"
+
+  # Data
+  ExpiresByType application/json                "access plus 0 seconds"
+  ExpiresByType application/xml                 "access plus 1 hour"
+  ExpiresByType text/xml                        "access plus 1 hour"
+
+  # Manifests / icons
+  ExpiresByType application/manifest+json       "access plus 1 week"
+  ExpiresByType image/x-icon                    "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon        "access plus 1 year"
+
+  # Images — long cache (immutable)
+  ExpiresByType image/jpeg                      "access plus 1 year"
+  ExpiresByType image/png                       "access plus 1 year"
+  ExpiresByType image/gif                       "access plus 1 year"
+  ExpiresByType image/svg+xml                   "access plus 1 year"
+  ExpiresByType image/webp                      "access plus 1 year"
+  ExpiresByType image/avif                      "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/woff2                      "access plus 1 year"
+  ExpiresByType font/woff                       "access plus 1 year"
+  ExpiresByType font/ttf                        "access plus 1 year"
+  ExpiresByType application/font-woff2          "access plus 1 year"
+  ExpiresByType application/font-woff           "access plus 1 year"
+
+  # CSS / JS — long cache (assumes filename hashing OR rare updates)
+  ExpiresByType text/css                        "access plus 1 month"
+  ExpiresByType application/javascript          "access plus 1 month"
+  ExpiresByType text/javascript                 "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Long-cache marker for static asset folder
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|avif|ico|woff|woff2|ttf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 6. GZIP / Deflate compression (smaller payloads = better SEO/Core Web Vitals)
+# ---------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/manifest+json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+
+  # Older proxies — pass Vary header
+  <IfModule mod_headers.c>
+    Header append Vary Accept-Encoding
+  </IfModule>
+</IfModule>
+
+# ---------------------------------------------------------------------
+# 7. Custom 404 (falls back to index.html so the user lands somewhere usable)
+# ---------------------------------------------------------------------
+ErrorDocument 404 /index.html
+
+# ---------------------------------------------------------------------
+# 8. Block access to sensitive files
+# ---------------------------------------------------------------------
+<FilesMatch "^\.(htaccess|htpasswd|env|git|gitignore|DS_Store)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|sw[op])|~)$">
+  Require all denied
+</FilesMatch>
+
+# =====================================================================
+# End of .htaccess
+# =====================================================================

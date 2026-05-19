@@ -3,7 +3,53 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>State Roofing & Carpentry — Structure Preview (wireframe)</title>
+
+<!-- Primary SEO -->
+<title>Roofing Contractor in Massachusetts | State Roofing & Carpentry</title>
+<meta name="description" content="Licensed MA roofing contractor since 2006. Roofing, siding, decking & 24/7 emergency repair across Boston & all Massachusetts. Free estimate in 5 min." />
+<meta name="keywords" content="roofing contractor Massachusetts, roofer Boston MA, roof repair Boston, siding contractor MA, decking contractor Massachusetts, emergency roof repair MA, general contractor Boston, carpentry Massachusetts, licensed roofer MA, free roofing estimate" />
+<meta name="author" content="State Roofing & Carpentry" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow" />
+<link rel="canonical" href="https://stategcinc.com/" />
+
+<!-- Geo targeting -->
+<meta name="geo.region" content="US-MA" />
+<meta name="geo.placename" content="Massachusetts" />
+<meta name="ICBM" content="42.4072,-71.3824" />
+
+<!-- Theme & branding -->
+<meta name="theme-color" content="#003E6B" />
+<meta name="apple-mobile-web-app-title" content="State Roofing" />
+<meta name="application-name" content="State Roofing & Carpentry" />
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="State Roofing & Carpentry" />
+<meta property="og:title" content="Roofing Contractor in Massachusetts | State Roofing & Carpentry" />
+<meta property="og:description" content="Licensed MA roofing contractor since 2006. Roofing, siding, decking & 24/7 emergency repair across Boston & all Massachusetts. Free estimate in 5 min." />
+<meta property="og:url" content="https://stategcinc.com/" />
+<meta property="og:image" content="https://stategcinc.com/assets/hero.png" />
+<meta property="og:image:secure_url" content="https://stategcinc.com/assets/hero.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="State Roofing & Carpentry — Trusted Massachusetts roofing contractor since 2006" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Roofing Contractor in Massachusetts | State Roofing & Carpentry" />
+<meta name="twitter:description" content="Licensed MA roofing contractor since 2006. Roofing, siding, decking & 24/7 emergency repair across Boston & all Massachusetts. Free estimate in 5 min." />
+<meta name="twitter:image" content="https://stategcinc.com/assets/hero.png" />
+<meta name="twitter:image:alt" content="State Roofing & Carpentry — Trusted Massachusetts roofing contractor since 2006" />
+
+<!-- Favicons / app icons -->
+<link rel="icon" type="image/svg+xml" href="assets/logo-icon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-icon.png" />
+<link rel="apple-touch-icon" href="assets/logo-icon.png" />
+<link rel="shortcut icon" href="assets/logo-icon.png" />
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -487,7 +533,7 @@ body.lightbox-active{overflow:hidden}
       <p>Tell us about your project. We'll respond with a written estimate.</p>
       <div class="response">⚡ Response within 5 minutes</div>
     </div>
-    <form class="estimate-card reveal" onsubmit="event.preventDefault();alert('Form submission demo — backend integration is data-pending.')">
+    <form class="estimate-card reveal js-ghl-form" id="estimate-form" data-form-source="hero-section" novalidate>
       <div class="form-row two">
         <div class="form-group"><label for="f-name">Full Name<span class="req">*</span></label><input id="f-name" type="text" name="name" required autocomplete="name" placeholder="Your name" /></div>
         <div class="form-group"><label for="f-email">Email<span class="req">*</span></label><input id="f-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com" /></div>
@@ -806,7 +852,7 @@ body.lightbox-active{overflow:hidden}
       <div class="final-cta-emergency"><strong>24/7 Emergency?</strong> <a href="tel:+16177022062">Same number, anytime.</a></div>
       <div class="final-cta-trust">Licensed · Insured · 20+ Years Serving MA</div>
     </div>
-    <form class="final-cta-form" id="cta-estimate-form" onsubmit="event.preventDefault();alert('Form submission demo — backend integration is data-pending.')">
+    <form class="final-cta-form js-ghl-form" id="cta-estimate-form" data-form-source="final-cta" novalidate>
       <h3>Request a Free Estimate</h3>
       <p class="form-sub">Response within 5 minutes.</p>
       <div class="form-row">
@@ -878,6 +924,289 @@ body.lightbox-active{overflow:hidden}
     </div>
   </div>
 </footer>
+
+<!-- JSON-LD Structured Data (LocalBusiness + Organization + WebSite + FAQ) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://stategcinc.com/#organization",
+      "name": "State Roofing & Carpentry",
+      "alternateName": ["State General Contractors Inc", "State Roofing"],
+      "url": "https://stategcinc.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://stategcinc.com/assets/logo-full.png",
+        "contentUrl": "https://stategcinc.com/assets/logo-full.png",
+        "width": 460,
+        "height": 76
+      },
+      "image": "https://stategcinc.com/assets/hero.png",
+      "email": "info@stategc.net",
+      "telephone": "+1-617-702-2062",
+      "foundingDate": "2006",
+      "description": "Family-operated Massachusetts roofing and general contractor since 2006. Licensed and fully insured. Roofing, siding, decking, remodeling, framing, and 24/7 emergency roof repair."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://stategcinc.com/#website",
+      "url": "https://stategcinc.com/",
+      "name": "State Roofing & Carpentry",
+      "description": "Licensed Massachusetts roofing contractor — roofing, siding, decking, framing & 24/7 emergency repair.",
+      "publisher": { "@id": "https://stategcinc.com/#organization" },
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://stategcinc.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": ["LocalBusiness", "RoofingContractor", "GeneralContractor", "HomeAndConstructionBusiness"],
+      "@id": "https://stategcinc.com/#business",
+      "name": "State Roofing & Carpentry",
+      "alternateName": "State General Contractors Inc",
+      "url": "https://stategcinc.com/",
+      "logo": "https://stategcinc.com/assets/logo-full.png",
+      "image": [
+        "https://stategcinc.com/assets/hero.png",
+        "https://stategcinc.com/assets/about-us.jpg"
+      ],
+      "description": "Licensed Massachusetts roofing & general contractor since 2006. Roofing, siding, decking, remodeling, framing & 24/7 emergency repair. Serving Boston, Worcester, Cambridge & every town across Massachusetts.",
+      "slogan": "Trusted Massachusetts roofing & general contracting since 2006.",
+      "telephone": "+1-617-702-2062",
+      "email": "info@stategc.net",
+      "priceRange": "$$",
+      "foundingDate": "2006",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": ["Cash", "Check", "Credit Card", "Insurance Claim"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "MA",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Massachusetts", "@id": "https://en.wikipedia.org/wiki/Massachusetts" },
+        { "@type": "City", "name": "Boston" },
+        { "@type": "City", "name": "Worcester" },
+        { "@type": "City", "name": "Springfield" },
+        { "@type": "City", "name": "Cambridge" },
+        { "@type": "City", "name": "Lowell" },
+        { "@type": "City", "name": "Brockton" },
+        { "@type": "City", "name": "New Bedford" },
+        { "@type": "City", "name": "Quincy" },
+        { "@type": "City", "name": "Lynn" },
+        { "@type": "City", "name": "Fall River" },
+        { "@type": "City", "name": "Newton" },
+        { "@type": "City", "name": "Somerville" },
+        { "@type": "City", "name": "Framingham" },
+        { "@type": "City", "name": "Haverhill" },
+        { "@type": "City", "name": "Brookline" },
+        { "@type": "City", "name": "Plymouth" },
+        { "@type": "City", "name": "Medford" },
+        { "@type": "City", "name": "Taunton" },
+        { "@type": "City", "name": "Chicopee" },
+        { "@type": "City", "name": "Weymouth" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
+      "specialOpeningHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "description": "24/7 emergency roofing response",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "knowsLanguage": ["en", "es", "pt"],
+      "knowsAbout": [
+        "Residential Roofing",
+        "Roof Replacement",
+        "Roof Repair",
+        "Emergency Roof Repair",
+        "Storm Damage Restoration",
+        "Siding Installation",
+        "Decking Construction",
+        "Home Remodeling",
+        "Framing & Carpentry",
+        "Insurance Claim Assistance"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Roofing & Construction Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential Roofing & Replacement",
+              "description": "Full roof replacements and repairs across Massachusetts. Premium materials, lifetime workmanship warranty.",
+              "serviceType": "Roofing",
+              "areaServed": { "@type": "State", "name": "Massachusetts" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Siding Installation",
+              "description": "Vinyl, fiber cement, and engineered wood siding installation throughout MA.",
+              "serviceType": "Siding",
+              "areaServed": { "@type": "State", "name": "Massachusetts" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Decking Construction",
+              "description": "Custom deck design, build, and replacement for Massachusetts homes.",
+              "serviceType": "Decking",
+              "areaServed": { "@type": "State", "name": "Massachusetts" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Home Remodeling",
+              "description": "Kitchen, bathroom, and full-home remodeling services across Massachusetts.",
+              "serviceType": "Remodeling",
+              "areaServed": { "@type": "State", "name": "Massachusetts" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Framing & Carpentry",
+              "description": "Structural framing and finish carpentry for new builds and additions.",
+              "serviceType": "Framing",
+              "areaServed": { "@type": "State", "name": "Massachusetts" }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "24/7 Emergency Roof Repair",
+              "description": "Round-the-clock emergency response for active leaks, storm damage, ice dams, and fallen branches across Massachusetts. On-site within 4–8 hours.",
+              "serviceType": "Emergency Roof Repair",
+              "areaServed": { "@type": "State", "name": "Massachusetts" },
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": "+1-617-702-2062",
+                "availableLanguage": ["en"]
+              }
+            }
+          }
+        ]
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-617-702-2062",
+          "contactType": "customer service",
+          "areaServed": "US-MA",
+          "availableLanguage": ["en"],
+          "hoursAvailable": "Mo-Fr 08:00-18:00, Sa 09:00-14:00"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-617-702-2062",
+          "contactType": "emergency",
+          "areaServed": "US-MA",
+          "availableLanguage": ["en"],
+          "hoursAvailable": "Mo-Su 00:00-23:59"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://stategcinc.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do free estimates work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We respond within 5 minutes of your request, then schedule an on-site visit and provide a written estimate covering scope, materials, timeline, and warranty. No deposit required to receive your estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are you licensed and insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We are a fully licensed Massachusetts general contractor and carry comprehensive general liability and workers' compensation insurance. Proof of license and insurance is available upon request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's your warranty?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Materials are covered by manufacturer warranties (up to 50 years for premium roofing). Our workmanship carries a lifetime warranty as long as you own the home."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a typical roof replacement take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most residential roof replacements take 1–3 days depending on size, complexity, and weather. We provide an exact timeline before work begins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you help with insurance claims?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. For storm damage (Nor'easters, hail, ice dams), we provide documentation and work directly with your insurance adjuster to streamline the claim."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can you respond to emergencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 24/7 emergencies (active leaks, storm damage, fallen branches), we aim to be on-site within 4–8 hours, often the same day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What areas of Massachusetts do you serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All of Massachusetts — including Boston, Worcester, Springfield, Cambridge, Lowell, Brockton, Quincy, Lynn, New Bedford, Newton, Somerville, Framingham, and every town in between."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does pricing work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free estimates are written and binding. We don't charge hidden fees, and we don't ask for full payment upfront. Most projects use a milestone payment structure."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <!-- Lightbox structure (hidden by default) -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightbox-caption">
@@ -1084,6 +1413,146 @@ document.querySelectorAll('.faq-q').forEach(q=>{
     if(raf)return;
     raf=requestAnimationFrame(update);
   },{passive:true});
+})();
+</script>
+
+<!-- =============================================================
+     GHL Webhook Integration — submits leads to GoHighLevel
+     Triggers on any form with .js-ghl-form class
+     ============================================================= -->
+<script>
+(function(){
+  // ⚠️ ============================================================
+  // ⚠️  COLE A URL DO WEBHOOK GHL ABAIXO (Inbound Webhook Trigger)
+  // ⚠️  Formato: https://services.leadconnectorhq.com/hooks/...
+  // ⚠️ ============================================================
+  const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/yI46198JchRDOMtYAV4C/webhook-trigger/AQ9MxK5FZm5xJ852UpEo';
+
+  const PHONE_FALLBACK = '(617) 702-2062';
+  const EMAIL_FALLBACK = 'info@stategc.net';
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]
+    ));
+  }
+
+  function buildPayload(form){
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd.entries());
+    const fullName = (data.name || '').trim();
+    const parts = fullName.split(/\s+/);
+    const firstName = parts.shift() || '';
+    const lastName = parts.join(' ');
+
+    return {
+      firstName: firstName,
+      lastName: lastName,
+      name: fullName,
+      email: (data.email || '').trim(),
+      phone: (data.phone || '').trim(),
+      sms_consent: fd.has('sms_consent'),
+      contact_consent: fd.has('contact_consent'),
+      source: 'state-roofing-website',
+      form_id: form.id || 'unknown',
+      form_source: form.dataset.formSource || form.id || 'unknown',
+      page_url: window.location.href,
+      page_title: document.title,
+      referrer: document.referrer || 'direct',
+      user_agent: navigator.userAgent,
+      submitted_at: new Date().toISOString(),
+      tags: ['website-lead', 'state-roofing', form.dataset.formSource || form.id || 'form']
+    };
+  }
+
+  function renderSuccess(form, firstName){
+    const safeName = escapeHtml(firstName || 'we got it');
+    form.innerHTML = ''
+      + '<div style="text-align:center;padding:32px 20px">'
+      +   '<div style="width:56px;height:56px;margin:0 auto 16px;background:#10B981;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:700">&#10003;</div>'
+      +   '<h3 style="color:#003E6B;margin:0 0 12px;font-size:22px">Thanks, ' + safeName + '!</h3>'
+      +   '<p style="color:#4B5563;margin:0 0 18px;line-height:1.55">'
+      +     'We received your request and our team will reach out within <strong>5 minutes</strong> during business hours.'
+      +   '</p>'
+      +   '<p style="color:#4B5563;font-size:14px;margin:0">'
+      +     '24/7 emergency? Call <a href="tel:+16177022062" style="color:#F08C2B;font-weight:700;text-decoration:none">' + PHONE_FALLBACK + '</a> anytime.'
+      +   '</p>'
+      + '</div>';
+  }
+
+  function renderError(form, btn, originalLabel){
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+    var note = form.querySelector('.js-ghl-error');
+    if (note) note.remove();
+    var div = document.createElement('div');
+    div.className = 'js-ghl-error';
+    div.style.cssText = 'margin-top:12px;padding:12px 14px;background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;color:#991B1B;font-size:14px;line-height:1.5';
+    div.innerHTML = 'Sorry — we couldn’t submit your request right now. '
+      + 'Please call <a href="tel:+16177022062" style="color:#991B1B;font-weight:700">' + PHONE_FALLBACK + '</a> '
+      + 'or email <a href="mailto:' + EMAIL_FALLBACK + '" style="color:#991B1B;font-weight:700">' + EMAIL_FALLBACK + '</a>.';
+    btn.insertAdjacentElement('afterend', div);
+  }
+
+  async function handleSubmit(e){
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    // Native HTML5 validation (since we set novalidate on form)
+    if (!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalLabel = btn ? btn.textContent : '';
+    if (btn){
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+    }
+
+    const payload = buildPayload(form);
+
+    // If webhook URL not yet configured, log payload and fail gracefully
+    if (GHL_WEBHOOK_URL === 'PASTE_GHL_WEBHOOK_URL_HERE' || !GHL_WEBHOOK_URL){
+      console.warn('[GHL] Webhook URL not configured. Payload that would be sent:', payload);
+      alert('Form is ready but the webhook is not connected yet.\n\nFor immediate help, call ' + PHONE_FALLBACK + '.');
+      if (btn){
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+      }
+      return;
+    }
+
+    try {
+      const res = await fetch(GHL_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true
+      });
+      // GHL inbound webhooks return 200 even on async accept
+      if (!res.ok && res.status !== 0) throw new Error('HTTP ' + res.status);
+      renderSuccess(form, payload.firstName);
+      // Optional analytics hook (GA4 / Meta Pixel — fires only if loaded)
+      if (typeof window.gtag === 'function'){
+        window.gtag('event', 'generate_lead', {
+          form_id: form.id,
+          source: payload.form_source
+        });
+      }
+      if (typeof window.fbq === 'function'){
+        window.fbq('track', 'Lead', { form_id: form.id });
+      }
+    } catch (err){
+      console.error('[GHL] Submit error', err);
+      renderError(form, btn, originalLabel);
+    }
+  }
+
+  document.querySelectorAll('.js-ghl-form').forEach(function(form){
+    form.addEventListener('submit', handleSubmit);
+  });
 })();
 </script>
 </body>

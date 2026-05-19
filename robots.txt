@@ -1,0 +1,29 @@
+# State Roofing & Carpentry — Robots.txt
+# https://stategcinc.com
+
+User-agent: *
+Allow: /
+
+# Block common low-value paths
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*utm_
+Disallow: /*?*fbclid=
+Disallow: /*?*gclid=
+
+# Allow Google to crawl images for image search
+User-agent: Googlebot-Image
+Allow: /assets/
+
+# AI crawler policy — allow for visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://stategcinc.com/sitemap.xml
